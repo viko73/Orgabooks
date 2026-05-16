@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrgaBook — Personnages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/orgabook.png">
+</head>
+<body>
+
+  <!-- ===== VUE : LISTE DES ESPACES ===== -->
+  <div id="view-spaces">
+
+    <nav>
+      <a href="index.html" class="logo"><img src="../assets/orgabook2.png" alt="" class="logo-img">Orga<span>Book</span></a>
+      <div class="nav-sections">
+        <a href="app.html" class="nav-section">✦ Notes</a>
+        <a href="characters.html" class="nav-section active">◈ Personnages</a>
+        <a href="worlds.html" class="nav-section">◎ Mondes</a>
+      </div>
+      <button class="btn-primary" id="btn-new-space">+ Nouvel espace</button>
+    </nav>
+
+    <main class="spaces-main">
+      <div class="page-header">
+        <div class="hero-label">Mes personnages</div>
+        <h1>Mes <em>espaces</em></h1>
+        <p class="subtitle">Chaque espace regroupe les personnages d'une histoire. Clique pour l'ouvrir, ou crée-en un nouveau.</p>
+      </div>
+      <div id="spaces-grid" class="spaces-grid"></div>
+      <div id="empty-state" class="empty-state" style="display:none;">
+        <span class="empty-icon">◈</span>
+        <p>Aucun espace pour l'instant.</p>
+        <button class="btn-primary" id="btn-new-space-empty">Créer mon premier espace</button>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ===== VUE : ÉDITEUR D'UN ESPACE ===== -->
+  <div id="view-editor" style="display:none;">
+
+    <div class="editor-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <button class="back-btn" id="btn-back">← Espaces</button>
+          <div class="space-info">
+            <div class="space-cover" id="editor-cover"></div>
+            <h2 class="space-title" id="editor-title"></h2>
+          </div>
+          <div class="sidebar-section-label">Personnages</div>
+          <input type="text" id="char-search" placeholder="Rechercher..." style="
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            border-radius: 3px;
+            color: var(--white);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            padding: 5px 8px;
+            outline: none;
+            box-sizing: border-box;
+            margin-bottom: 0.5rem;
+            transition: border-color 0.2s;
+          " onfocus="this.style.borderColor='var(--cyan)'" onblur="this.style.borderColor='var(--border-soft)'" />
+          <ul id="chars-list" class="pages-list"></ul>
+          <button class="btn-add-page" id="btn-add-char">+ Ajouter un personnage</button>
+        </div>
+        <div class="sidebar-bottom">
+          <button class="btn-danger" id="btn-delete-space">Supprimer l'espace</button>
+        </div>
+      </aside>
+
+      <!-- Zone principale -->
+      <div class="editor-area">
+
+        <!-- Aucun personnage sélectionné -->
+        <div id="no-char-selected" class="no-page">
+          <span class="empty-icon">◈</span>
+          <p>Sélectionne un personnage ou crée-en un nouveau.</p>
+        </div>
+
+        <!-- Fiche personnage -->
+        <div id="char-editor" style="display:none;">
+          <div class="editor-top-bar">
+            <input type="text" id="char-name" class="page-title-input" placeholder="Nom du personnage..." />
+            <button class="btn-icon-danger" id="btn-delete-char" title="Supprimer">✕</button>
+          </div>
+
+          <div class="char-fields">
+
+            <div class="cover-upload-zone" id="char-cover-zone">
+              <input type="file" id="char-cover-input" accept="image/*" style="display:none;">
+              <div class="upload-hint">Clique pour ajouter une image</div>
+            </div>
+
+            <div class="fields-row">
+              <div class="field-group">
+                <label class="field-label">Âge</label>
+                <input type="text" class="field-input" id="char-age" placeholder="Ex : 27 ans" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Rôle</label>
+                <input type="text" class="field-input" id="char-role" placeholder="Ex : Protagoniste" />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">Description physique</label>
+              <textarea class="field-textarea" id="char-physical" placeholder="Apparence, traits distinctifs..."></textarea>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="field-group">
+              <label class="field-label">Traits de personnalité</label>
+              <textarea class="field-textarea" id="char-personality" placeholder="Caractère, valeurs, défauts..."></textarea>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">Histoire / Backstory</label>
+              <textarea class="field-textarea" id="char-backstory" placeholder="Origines, événements marquants, motivations..." style="min-height:130px;"></textarea>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="field-group">
+              <label class="field-label">Relations</label>
+              <div class="relations-list" id="char-relations-list"></div>
+              <div class="relation-input-row">
+                <input type="text" class="field-input" id="char-relation-input" placeholder="Ex : Aëlyn — sœur rivale" />
+                <button class="btn-add-relation" id="btn-add-relation">+ Ajouter</button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="editor-status" id="char-status">Sauvegardé ✦</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL : CRÉER UN ESPACE ===== -->
+  <div id="modal-overlay" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Nouvel espace</h3>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label">Titre <span class="required">*</span></label>
+        <input type="text" id="space-title-input" class="form-input" placeholder="Ex : Le Dernier Royaume..." />
+        <label class="form-label" style="margin-top:1.5rem;">Image de couverture <span class="optional">(optionnel)</span></label>
+        <div class="image-upload-zone" id="image-upload-zone">
+          <input type="file" id="space-image-input" accept="image/*" style="display:none;" />
+          <div id="image-preview" class="image-preview-empty">
+            <span>Clique pour choisir une image</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="modal-cancel">Annuler</button>
+        <button class="btn-primary" id="modal-confirm">Créer l'espace</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-logout" id="btn-logout">Se déconnecter</button>
+  <script src="../js/auth.js"></script>
+  <script src="../js/characters.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrgaBook — Mondes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/orgabook.png">
+</head>
+<body>
+
+  <!-- ===== VUE : LISTE ===== -->
+  <div id="view-list">
+    <nav>
+      <a href="index.html" class="logo"><img src="../assets/orgabook2.png" alt="" class="logo-img">Orga<span>Book</span></a>
+      <div class="nav-sections">
+        <a href="app.html" class="nav-section">✦ Notes</a>
+        <a href="characters.html" class="nav-section">◈ Personnages</a>
+        <a href="worlds.html" class="nav-section active">◎ Mondes</a>
+      </div>
+      <button class="btn-primary" id="btn-new-world">+ Nouveau monde</button>
+    </nav>
+
+    <div class="section-hero">
+      <div class="hero-label">Mes univers</div>
+      <h1>Mes <em>mondes</em></h1>
+      <p class="subtitle">Construis les univers de tes histoires — géographie, règles, factions et bien plus.</p>
+    </div>
+
+    <div id="worlds-grid" class="cards-grid"></div>
+
+    <div id="empty-state" class="empty-state" style="display:none;">
+      <span class="empty-icon">◎</span>
+      <p>Aucun monde pour l'instant.</p>
+      <button class="btn-primary" id="btn-new-world-empty">Créer mon premier monde</button>
+    </div>
+  </div>
+
+  <!-- ===== VUE : FICHE MONDE ===== -->
+  <div id="view-detail" style="display:none;">
+    <div class="detail-layout">
+
+      <!-- Sidebar -->
+      <aside class="detail-sidebar">
+        <div>
+          <button class="back-btn" id="btn-back">← Mondes</button>
+
+          <!-- Carte / image -->
+          <div class="cover-upload-zone" id="world-cover-zone">
+            <input type="file" id="world-cover-input" accept="image/*" style="display:none;">
+            <div id="world-cover-preview" class="upload-hint">Clique pour ajouter<br>une carte ou image</div>
+          </div>
+
+          <!-- Liste des mondes -->
+          <div class="sidebar-section-label" style="margin-bottom:0.5rem;">Tous les mondes</div>
+          <ul id="worlds-sidebar-list" class="pages-list"></ul>
+        </div>
+        <div>
+          <button class="btn-danger" id="btn-delete-world">Supprimer le monde</button>
+        </div>
+      </aside>
+
+      <!-- Zone principale -->
+      <div class="detail-main">
+        <input type="text" class="field-title-input" id="world-name" placeholder="Nom du monde..." />
+
+        <!-- Description générale -->
+        <div class="field-group">
+          <label class="field-label">Description générale</label>
+          <textarea class="field-textarea" id="world-desc" placeholder="Présente ce monde en quelques phrases..." style="min-height:100px;"></textarea>
+        </div>
+
+        <div class="fields-row">
+          <div class="field-group">
+            <label class="field-label">Époque / Période</label>
+            <input type="text" class="field-input" id="world-era" placeholder="Ex : Médiéval fantastique" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Ambiance</label>
+            <input type="text" class="field-input" id="world-tone" placeholder="Ex : Sombre, épique..." />
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Règles / Magie / Lois -->
+        <div class="field-group">
+          <label class="field-label">Règles, magie & lois</label>
+          <textarea class="field-textarea" id="world-rules" placeholder="Système de magie, lois naturelles, contraintes..." style="min-height:110px;"></textarea>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Lieux importants -->
+        <div class="field-group">
+          <label class="field-label">Lieux importants</label>
+          <div class="sub-list" id="world-places-list"></div>
+          <button class="btn-add-sub" id="btn-add-place">+ Ajouter un lieu</button>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Factions -->
+        <div class="field-group">
+          <label class="field-label">Factions & groupes</label>
+          <div class="sub-list" id="world-factions-list"></div>
+          <button class="btn-add-sub" id="btn-add-faction">+ Ajouter une faction</button>
+        </div>
+
+        <div class="detail-status" id="world-status">Sauvegardé ✦</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal ajout lieu / faction -->
+  <div id="sub-modal-overlay" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="sub-modal-title">Nouveau lieu</h3>
+        <button class="modal-close" id="sub-modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label">Nom <span class="required">*</span></label>
+        <input type="text" class="form-input" id="sub-name-input" placeholder="" />
+        <label class="form-label" style="margin-top:1.25rem;">Description <span class="optional">(optionnel)</span></label>
+        <textarea class="form-input" id="sub-desc-input" placeholder="" style="min-height:70px;resize:vertical;font-family:'Space Mono',monospace;font-size:0.82rem;line-height:1.7;"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="sub-modal-cancel">Annuler</button>
+        <button class="btn-primary" id="sub-modal-confirm">Ajouter</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-logout" id="btn-logout">Se déconnecter</button>
+  <script src="../js/auth.js"></script>
+  <script src="../js/worlds.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrgaBook — Connexion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/orgabook.png">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+
+    <!-- Panneau gauche décoratif -->
+    <div class="auth-deco">
+      <a href="index.html" class="deco-logo"><img src="../assets/orgabook2.png" alt="" class="logo-img">Orga<span>Book</span></a>
+      <div class="deco-content">
+        <blockquote>"Les meilleures histoires ne s'inventent pas —<br>elles se <em>découvrent</em>."</blockquote>
+        <p>Rejoins les créateurs qui donnent vie à leurs idées.</p>
+      </div>
+      <div class="deco-grid"></div>
+    </div>
+
+    <!-- Panneau droit : formulaires -->
+    <div class="auth-panel">
+
+      <!-- ===== FORMULAIRE CONNEXION ===== -->
+      <div id="form-login" class="auth-form active">
+        <div class="auth-form-header">
+          <h1>Bon retour <em>✦</em></h1>
+          <p>Connecte-toi pour accéder à tes histoires.</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Nom d'utilisateur</label>
+          <input type="text" class="field-input" id="login-username" placeholder="Ton nom d'utilisateur..." autocomplete="username" />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Mot de passe</label>
+          <div class="input-password-wrap">
+            <input type="password" class="field-input" id="login-password" placeholder="Ton mot de passe..." autocomplete="current-password" />
+            <button class="toggle-password" data-target="login-password" title="Afficher / masquer">◎</button>
+          </div>
+        </div>
+
+        <div class="auth-error" id="login-error"></div>
+
+        <button class="btn-auth" id="btn-login">Se connecter</button>
+
+        <div class="auth-links">
+          <button class="link-btn" id="go-forgot">Mot de passe oublié ?</button>
+          <span class="auth-sep">·</span>
+          <button class="link-btn" id="go-register">Créer un compte</button>
+        </div>
+      </div>
+
+      <!-- ===== FORMULAIRE INSCRIPTION ===== -->
+      <div id="form-register" class="auth-form">
+        <div class="auth-form-header">
+          <h1>Créer un compte <em>◈</em></h1>
+          <p>Rejoins OrgaBook et commence à écrire.</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Nom d'utilisateur <span class="required">*</span></label>
+          <input type="text" class="field-input" id="reg-username" placeholder="Choisis un nom d'utilisateur..." autocomplete="username" />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Mot de passe <span class="required">*</span></label>
+          <div class="input-password-wrap">
+            <input type="password" class="field-input" id="reg-password" placeholder="Crée un mot de passe..." autocomplete="new-password" />
+            <button class="toggle-password" data-target="reg-password" title="Afficher / masquer">◎</button>
+          </div>
+          <div class="password-strength" id="password-strength">
+            <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+            <span class="strength-label" id="strength-label"></span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Confirmer le mot de passe <span class="required">*</span></label>
+          <div class="input-password-wrap">
+            <input type="password" class="field-input" id="reg-password2" placeholder="Répète ton mot de passe..." autocomplete="new-password" />
+            <button class="toggle-password" data-target="reg-password2" title="Afficher / masquer">◎</button>
+          </div>
+        </div>
+
+        <div class="auth-error" id="register-error"></div>
+        <div class="auth-success" id="register-success"></div>
+
+        <button class="btn-auth" id="btn-register">Créer mon compte</button>
+
+        <div class="auth-links">
+          <span>Déjà un compte ?</span>
+          <button class="link-btn" id="go-login-from-register">Se connecter</button>
+        </div>
+      </div>
+
+      <!-- ===== FORMULAIRE MOT DE PASSE OUBLIÉ ===== -->
+      <div id="form-forgot" class="auth-form">
+        <div class="auth-form-header">
+          <h1>Mot de passe oublié <em>◎</em></h1>
+          <p>Entre ton nom d'utilisateur pour réinitialiser ton mot de passe.</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Nom d'utilisateur</label>
+          <input type="text" class="field-input" id="forgot-username" placeholder="Ton nom d'utilisateur..." />
+        </div>
+
+        <div id="forgot-step2" style="display:none;">
+          <div class="field-group">
+            <label class="field-label">Nouveau mot de passe <span class="required">*</span></label>
+            <div class="input-password-wrap">
+              <input type="password" class="field-input" id="forgot-password" placeholder="Nouveau mot de passe..." />
+              <button class="toggle-password" data-target="forgot-password" title="Afficher / masquer">◎</button>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Confirmer <span class="required">*</span></label>
+            <div class="input-password-wrap">
+              <input type="password" class="field-input" id="forgot-password2" placeholder="Répète le mot de passe..." />
+              <button class="toggle-password" data-target="forgot-password2" title="Afficher / masquer">◎</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-error" id="forgot-error"></div>
+        <div class="auth-success" id="forgot-success"></div>
+
+        <button class="btn-auth" id="btn-forgot">Vérifier le compte</button>
+
+        <div class="auth-links">
+          <button class="link-btn" id="go-login-from-forgot">← Retour à la connexion</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/login.js"></script>
+</body>
+</html>

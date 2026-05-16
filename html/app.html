@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrgaBook — Mon espace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/orgabook.png">
+</head>
+<body>
+
+  <!-- ===== VUE : LISTE DES ESPACES ===== -->
+  <div id="view-spaces">
+
+    <nav>
+      <a href="index.html" class="logo"><img src="../assets/orgabook2.png" alt="" class="logo-img">Orga<span>Book</span></a>
+      <div class="nav-sections">
+        <a href="app.html" class="nav-section active">✦ Notes</a>
+        <a href="characters.html" class="nav-section">◈ Personnages</a>
+        <a href="worlds.html" class="nav-section">◎ Mondes</a>
+      </div>
+      <button class="btn-primary" id="btn-new-space">+ Nouvel espace</button>
+    </nav>
+
+    <main class="spaces-main">
+      <div class="page-header">
+        <div class="hero-label">Mes projets</div>
+        <h1>Mes <em>espaces</em></h1>
+        <p class="subtitle">Chaque espace est une histoire. Clique pour l'ouvrir, ou crée-en un nouveau.</p>
+      </div>
+      <div id="spaces-grid" class="spaces-grid"></div>
+      <div id="empty-state" class="empty-state" style="display:none;">
+        <span class="empty-icon">◎</span>
+        <p>Aucun espace pour l'instant.</p>
+        <button class="btn-primary" id="btn-new-space-empty">Créer mon premier espace</button>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ===== VUE : ÉDITEUR D'UN ESPACE ===== -->
+  <div id="view-editor" style="display:none;">
+
+    <div class="editor-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <button class="back-btn" id="btn-back">← Espaces</button>
+          <div class="space-info">
+            <div class="space-cover" id="editor-cover"></div>
+            <h2 class="space-title" id="editor-title"></h2>
+          </div>
+          <div class="sidebar-section-label">Pages</div>
+          <ul id="pages-list" class="pages-list"></ul>
+          <button class="btn-add-page" id="btn-add-page">+ Ajouter une page</button>
+        </div>
+        <div class="sidebar-bottom">
+          <button class="btn-danger" id="btn-delete-space">Supprimer l'espace</button>
+        </div>
+      </aside>
+
+      <!-- Zone d'édition -->
+      <div class="editor-area">
+        <div id="no-page-selected" class="no-page">
+          <span class="empty-icon">◈</span>
+          <p>Sélectionne une page ou crée-en une nouvelle.</p>
+        </div>
+        <div id="page-editor" style="display:none;">
+          <div class="editor-top-bar">
+            <input type="text" id="page-title-input" class="page-title-input" placeholder="Titre de la page..." />
+            <button class="btn-icon-danger" id="btn-delete-page" title="Supprimer la page">✕</button>
+          </div>
+          <textarea id="page-content" class="page-content" placeholder="Commence à écrire ici..."></textarea>
+          <div class="editor-status" id="editor-status">Sauvegardé ✦</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ===== MODAL : CRÉER UN ESPACE ===== -->
+  <div id="modal-overlay" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Nouvel espace</h3>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label">Titre <span class="required">*</span></label>
+        <input type="text" id="space-title-input" class="form-input" placeholder="Ex : Le Dernier Royaume..." />
+
+        <label class="form-label" style="margin-top:1.5rem;">Image de couverture <span class="optional">(optionnel)</span></label>
+        <div class="image-upload-zone" id="image-upload-zone">
+          <input type="file" id="space-image-input" accept="image/*" style="display:none;" />
+          <div id="image-preview" class="image-preview-empty">
+            <span>Clique pour choisir une image</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="modal-cancel">Annuler</button>
+        <button class="btn-primary" id="modal-confirm">Créer l'espace</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-logout" id="btn-logout">Se déconnecter</button>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

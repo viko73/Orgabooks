@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrgaBook — Manuel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/manual.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/orgabook.png">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo" style="text-decoration:none;"><img src="../assets/orgabook2.png" alt="" class="logo-img">Orga<span>Book</span></a>
+  <ul>
+    
+    <li><a href="login.html" class="nav-cta">Commencer</a></li>
+  </ul>
+</nav>
+
+<div class="manual-hero">
+  <div class="hero-label">Documentation</div>
+  <h1>Manuel <em>OrgaBook</em></h1>
+  <p class="hero-desc">Tout ce que tu peux faire sur OrgaBook, expliqué simplement.</p>
+</div>
+
+<div class="manual-layout">
+
+  <!-- Sommaire fixe -->
+  <aside class="manual-toc">
+    <div class="toc-label">Sommaire</div>
+    <ul>
+      <li><a href="#notes" class="toc-link">✦ Notes</a></li>
+      <li><a href="#characters" class="toc-link">◈ Personnages</a></li>
+      <li><a href="#worlds" class="toc-link">◎ Mondes</a></li>
+    </ul>
+  </aside>
+
+  <div class="manual-content">
+
+    <!-- ===== NOTES ===== -->
+    <section id="notes" class="manual-section">
+      <div class="section-tag">✦</div>
+      <h2>Notes</h2>
+      <p class="section-intro">La section Notes est l'espace d'écriture principal de OrgaBook. C'est là que tu rédiges tes histoires, chapitres et idées, organisés en espaces et en pages.</p>
+
+      <div class="manual-block">
+        <h3>Les espaces</h3>
+        <p>Un espace est un projet d'écriture. Tu peux en créer autant que tu veux — un par histoire, par univers, ou par projet. Chaque espace a un <strong>titre</strong> et une <strong>image de couverture</strong> optionnelle.</p>
+        <div class="tip">
+          <span class="tip-icon">✦</span>
+          <p>Crée un espace par histoire pour garder tes projets bien séparés.</p>
+        </div>
+      </div>
+
+      <div class="manual-block">
+        <h3>Créer un espace</h3>
+        <ol class="manual-steps">
+          <li>Clique sur <span class="kbd">+ Nouvel espace</span> en haut à droite.</li>
+          <li>Saisis le titre de ton histoire.</li>
+          <li>Ajoute une image de couverture si tu le souhaites.</li>
+          <li>Clique sur <span class="kbd">Créer l'espace</span> ou appuie sur <span class="kbd">Entrée</span>.</li>
+        </ol>
+      </div>
+
+      <div class="manual-block">
+        <h3>Les pages</h3>
+        <p>À l'intérieur d'un espace, tu crées des <strong>pages</strong>. Une page peut être un chapitre, une introduction, une conclusion ou une note d'idée. Chaque page a un titre et un contenu libre.</p>
+      </div>
+
+      <div class="manual-block">
+        <h3>Créer une page</h3>
+        <ol class="manual-steps">
+          <li>Ouvre un espace en cliquant dessus.</li>
+          <li>Dans la sidebar, clique sur <span class="kbd">+ Ajouter une page</span>.</li>
+          <li>Tape le nom de la page et appuie sur <span class="kbd">Entrée</span>.</li>
+          <li>La page s'ouvre automatiquement — commence à écrire !</li>
+        </ol>
+        <div class="tip">
+          <span class="tip-icon">◦</span>
+          <p>Appuie sur <span class="kbd">Échap</span> pour annuler la création d'une page sans la sauvegarder.</p>
+        </div>
+      </div>
+
+      <div class="manual-block">
+        <h3>Sauvegarde automatique</h3>
+        <p>Tout ce que tu écris est sauvegardé automatiquement dans ton navigateur (localStorage). L'indicateur <span class="badge">Sauvegardé ✦</span> apparaît en bas de l'éditeur dès que la sauvegarde est effectuée.</p>
+      </div>
+
+      <div class="manual-block">
+        <h3>Supprimer une page ou un espace</h3>
+        <p>Pour supprimer une <strong>page</strong>, clique sur le bouton <span class="kbd danger">✕</span> en haut à droite de l'éditeur. Pour supprimer un <strong>espace entier</strong> et toutes ses pages, utilise le bouton <span class="kbd danger">Supprimer l'espace</span> en bas de la sidebar.</p>
+        <div class="tip warning">
+          <span class="tip-icon">!</span>
+          <p>La suppression est définitive. Tes données sont stockées localement dans ton navigateur.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider-line"></div>
+
+    <!-- ===== PERSONNAGES ===== -->
+    <section id="characters" class="manual-section">
+      <div class="section-tag">◈</div>
+      <h2>Personnages</h2>
+      <p class="section-intro">La section Personnages te permet de créer des fiches détaillées pour chaque personnage de tes histoires, organisées en espaces comme les Notes.</p>
+
+      <div class="manual-block">
+        <h3>Les espaces personnages</h3>
+        <p>Comme pour les Notes, tu organises tes personnages en <strong>espaces</strong>. Un espace correspond généralement à une histoire ou un univers, pour regrouper tous ses personnages au même endroit.</p>
+        <div class="tip">
+          <span class="tip-icon">◈</span>
+          <p>Crée un espace "Le Dernier Royaume" et regroupe-y tous les personnages de cette histoire.</p>
+        </div>
+      </div>
+
+      <div class="manual-block">
+        <h3>Créer un espace personnages</h3>
+        <ol class="manual-steps">
+          <li>Va dans <span class="kbd">◈ Personnages</span> via la navigation.</li>
+          <li>Clique sur <span class="kbd">+ Nouvel espace</span>.</li>
+          <li>Donne un titre à l'espace et ajoute une image si tu le souhaites.</li>
+          <li>Clique sur <span class="kbd">Créer l'espace</span>.</li>
+        </ol>
+      </div>
+
+      <div class="manual-block">
+        <h3>Ajouter un personnage</h3>
+        <ol class="manual-steps">
+          <li>Ouvre un espace en cliquant dessus.</li>
+          <li>Dans la sidebar, clique sur <span class="kbd">+ Ajouter un personnage</span>.</li>
+          <li>Tape le nom du personnage et appuie sur <span class="kbd">Entrée</span>.</li>
+          <li>La fiche s'ouvre automatiquement.</li>
+        </ol>
+        <div class="tip">
+          <span class="tip-icon">◦</span>
+          <p>Les personnages sont triés automatiquement par ordre alphabétique. Tu peux aussi les rechercher via la barre de recherche dans la sidebar.</p>
+        </div>
+      </div>
+
+      <div class="manual-block">
+        <h3>La fiche personnage</h3>
+        <p>Chaque personnage dispose d'une fiche complète avec les champs suivants :</p>
+        <ul class="manual-list">
+          <li><strong>Nom</strong> — affiché dans la sidebar et sur la carte de l'espace.</li>
+          <li><strong>Âge</strong> — l'âge ou la tranche d'âge du personnage.</li>
+          <li><strong>Rôle</strong> — protagoniste, antagoniste, personnage secondaire...</li>
+          <li><strong>Description physique</strong> — apparence, traits distinctifs.</li>
+          <li><strong>Traits de personnalité</strong> — caractère, valeurs, défauts.</li>
+          <li><strong>Histoire / Backstory</strong> — origines et événements marquants.</li>
+          <li><strong>Relations</strong> — liens avec d'autres personnages, sous forme de tags.</li>
+          <li><strong>Image</strong> — une illustration ou photo du personnage.</li>
+        </ul>
+      </div>
+
+      <div class="manual-block">
+        <h3>Ajouter une relation</h3>
+        <ol class="manual-steps">
+          <li>En bas de la fiche, tape la relation dans le champ prévu (ex : "Aëlyn — sœur rivale").</li>
+          <li>Clique sur <span class="kbd">+ Ajouter</span> ou appuie sur <span class="kbd">Entrée</span>.</li>
+          <li>La relation apparaît sous forme de tag cyan.</li>
+          <li>Clique sur <span class="kbd danger">✕</span> sur un tag pour le supprimer.</li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="section-divider-line"></div>
+
+    <!-- ===== MONDES ===== -->
+    <section id="worlds" class="manual-section">
+      <div class="section-tag">◎</div>
+      <h2>Mondes</h2>
+      <p class="section-intro">La section Mondes te permet de construire et documenter les univers de tes histoires — géographie, règles, factions, lieux et ambiance.</p>
+
+      <div class="manual-block">
+        <h3>Créer un monde</h3>
+        <ol class="manual-steps">
+          <li>Va dans <span class="kbd">◎ Mondes</span> via la navigation.</li>
+          <li>Clique sur <span class="kbd">+ Nouveau monde</span>.</li>
+          <li>La fiche s'ouvre automatiquement — commence à remplir les informations.</li>
+        </ol>
+      </div>
+
+      <div class="manual-block">
+        <h3>La fiche monde</h3>
+        <p>Chaque monde dispose d'une fiche structurée avec les sections suivantes :</p>
+        <ul class="manual-list">
+          <li><strong>Nom</strong> — le nom de ton univers.</li>
+          <li><strong>Description générale</strong> — une présentation de l'univers en quelques phrases.</li>
+          <li><strong>Époque / Période</strong> — médiéval, futuriste, contemporain...</li>
+          <li><strong>Ambiance</strong> — sombre, épique, humoristique...</li>
+          <li><strong>Règles, magie & lois</strong> — le système de magie et les contraintes de l'univers.</li>
+          <li><strong>Lieux importants</strong> — les endroits clés avec nom et description.</li>
+          <li><strong>Factions & groupes</strong> — les organisations et clans avec leur description.</li>
+          <li><strong>Carte / image</strong> — une carte ou illustration uploadable dans la sidebar.</li>
+        </ul>
+      </div>
+
+      <div class="manual-block">
+        <h3>Ajouter un lieu ou une faction</h3>
+        <ol class="manual-steps">
+          <li>Dans la fiche monde, clique sur <span class="kbd">+ Ajouter un lieu</span> ou <span class="kbd">+ Ajouter une faction</span>.</li>
+          <li>Une fenêtre s'ouvre — saisis le nom et une description optionnelle.</li>
+          <li>Clique sur <span class="kbd">Ajouter</span> ou appuie sur <span class="kbd">Entrée</span>.</li>
+        </ol>
+        <div class="tip">
+          <span class="tip-icon">◎</span>
+          <p>Clique sur <span class="kbd">✎</span> à côté d'un lieu ou d'une faction pour modifier son nom et sa description après création.</p>
+        </div>
+      </div>
+
+      <div class="manual-block">
+        <h3>Naviguer entre les mondes</h3>
+        <p>La sidebar liste tous tes mondes. Clique sur un nom pour basculer directement vers ce monde sans repasser par la grille d'accueil.</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <span>OrgaBook</span> — Fait pour les raconteurs d'histoires</p>
+  <p>Un projet en cours de création ✦</p>
+</footer>
+
+<button class="btn-logout" id="btn-logout">Se déconnecter</button>
+<button id="scroll-top-btn">↑</button>
+
+<script src="../js/auth.js"></script>
+<script src="../js/manual.js"></script>
+</body>
+</html>
