@@ -449,6 +449,7 @@ h1 em { font-style: normal; color: var(--cyan); }
   display: flex;
   flex: 1;
   overflow: hidden;
+  position: relative;
 }
 
 .line-numbers {
@@ -456,7 +457,7 @@ h1 em { font-style: normal; color: var(--cyan); }
   min-width: 48px;
   background: var(--dark);
   border-right: 1px solid var(--border-soft);
-  padding: 2rem 10px 2rem 0;
+  padding: 2rem 0;
   text-align: right;
   font-family: 'Space Mono', monospace;
   font-size: 0.9rem;
@@ -465,10 +466,14 @@ h1 em { font-style: normal; color: var(--cyan); }
   opacity: 0.5;
   overflow: hidden;
   user-select: none;
+  padding-right: 10px;
   box-sizing: border-box;
 }
 
-.line-numbers span { display: block; }
+.line-numbers span {
+  display: block;
+  line-height: 1.9;
+}
 
 .page-content {
   flex: 1;
@@ -484,6 +489,8 @@ h1 em { font-style: normal; color: var(--cyan); }
   caret-color: var(--cyan);
   overflow-y: auto;
 }
+
+.page-content::placeholder { color: var(--text-muted); }
 
 .editor-status {
   padding: 0.5rem 2.5rem;
