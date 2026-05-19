@@ -1,5 +1,5 @@
 // Vérification session
-if (!localStorage.getItem("orgabook_session")) { window.location.href = "login.html"; }
+if (!localStorage.getItem("orgabook_session")) { window.location.href = "html/login.html"; }
 
 
 // --- Clé de stockage par utilisateur ---
