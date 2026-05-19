@@ -1,17 +1,17 @@
 // Vérification session
-if (!localStorage.getItem("storyhub_session")) { window.location.href = "login.html"; }
+if (!localStorage.getItem("orgabook_session")) { window.location.href = "/Orgabooks/html/login.html"; }
 
 
 // --- Clé de stockage par utilisateur ---
 function getUsername() {
   try {
-    const s = JSON.parse(localStorage.getItem('storyhub_session'));
+    const s = JSON.parse(localStorage.getItem('orgabook_session'));
     return s && s.username ? s.username.toLowerCase() : 'default';
   } catch { return 'default'; }
 }
-function storageKey() { return 'storyhub_data' + '_' + getUsername(); }
+function storageKey() { return 'orgabook_data' + '_' + getUsername(); }
 
-// ===== STORYHUB APP =====
+// ===== ORGABOOK APP =====
 // Gestion des espaces et pages avec localStorage
 
 
@@ -164,6 +164,12 @@ function selectPage(pageId) {
   document.getElementById('page-title-input').value = page.title || '';
   document.getElementById('page-content').value = page.content || '';
   document.getElementById('editor-status').textContent = 'Sauvegardé ✦';
+  updateLineNumbers();
+
+  // Synchroniser le scroll entre textarea et numéros de ligne
+  const textarea = document.getElementById('page-content');
+  const lineNumbers = document.getElementById('line-numbers');
+  textarea.onscroll = () => { lineNumbers.scrollTop = textarea.scrollTop; };
 }
 
 function addPage() {
@@ -265,10 +271,25 @@ function onPageTitleChange(e) {
   scheduleSave();
 }
 
+function updateLineNumbers() {
+  const textarea = document.getElementById('page-content');
+  const lineNumbers = document.getElementById('line-numbers');
+  if (!textarea || !lineNumbers) return;
+
+  const lines = textarea.value.split('\n').length;
+  lineNumbers.innerHTML = Array.from({ length: lines }, (_, i) =>
+    `<span>${i + 1}</span>`
+  ).join('');
+
+  // Synchroniser le scroll
+  lineNumbers.scrollTop = textarea.scrollTop;
+}
+
 function onPageContentChange(e) {
   const page = getCurrentPage();
   if (!page) return;
   page.content = e.target.value;
+  updateLineNumbers();
   scheduleSave();
 }
 

@@ -1,8 +1,8 @@
-// ===== STORYHUB — AUTH PARTAGÉ =====
+// ===== ORGABOOK — AUTH PARTAGÉ =====
 // Salutation + bouton déconnexion sur toutes les pages (sauf login)
 
 (function () {
-  const SESSION_KEY = 'storyhub_session';
+  const SESSION_KEY = 'orgabook_session';
 
   function getSession() {
     try { return JSON.parse(localStorage.getItem(SESSION_KEY)); }
@@ -38,7 +38,7 @@
   if (btn) {
     btn.addEventListener('click', () => {
       localStorage.removeItem(SESSION_KEY);
-      window.location.href = 'html/login.html';
+      window.location.href = '/Orgabooks/html/login.html';
     });
   }
 })();
