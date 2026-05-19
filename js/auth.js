@@ -38,7 +38,7 @@
   if (btn) {
     btn.addEventListener('click', () => {
       localStorage.removeItem(SESSION_KEY);
-      window.location.href = 'html/login.html';
+      window.location.href = '/Orgabooks/html/login.html';
     });
   }
 })();
