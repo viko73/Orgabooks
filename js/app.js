@@ -163,7 +163,11 @@ function selectPage(pageId) {
 
   document.getElementById('page-title-input').value = page.title || '';
   document.getElementById('page-content').value = page.content || '';
-  document.getElementById('editor-status').textContent = 'Sauvegardé ✦';
+  document.getElementById('editor-status').textContent = 'Sauvegardé';
+  updateLineNumbers();
+  const textarea = document.getElementById('page-content');
+  const lineNumbers = document.getElementById('line-numbers');
+  textarea.onscroll = () => { lineNumbers.scrollTop = textarea.scrollTop; };
 }
 
 function addPage() {
@@ -265,10 +269,22 @@ function onPageTitleChange(e) {
   scheduleSave();
 }
 
+function updateLineNumbers() {
+  const textarea = document.getElementById('page-content');
+  const lineNumbers = document.getElementById('line-numbers');
+  if (!textarea || !lineNumbers) return;
+  const lines = textarea.value.split('\n').length;
+  lineNumbers.innerHTML = Array.from({ length: lines }, (_, i) =>
+    `<span>${i + 1}</span>`
+  ).join('');
+  lineNumbers.scrollTop = textarea.scrollTop;
+}
+
 function onPageContentChange(e) {
   const page = getCurrentPage();
   if (!page) return;
   page.content = e.target.value;
+  updateLineNumbers();
   scheduleSave();
 }
 

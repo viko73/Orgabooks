@@ -445,6 +445,31 @@ h1 em { font-style: normal; color: var(--cyan); }
 
 .page-title-input::placeholder { color: var(--text-muted); }
 
+.editor-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.line-numbers {
+  width: 48px;
+  min-width: 48px;
+  background: var(--dark);
+  border-right: 1px solid var(--border-soft);
+  padding: 2rem 10px 2rem 0;
+  text-align: right;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+  opacity: 0.5;
+  overflow: hidden;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.line-numbers span { display: block; }
+
 .page-content {
   flex: 1;
   background: transparent;
@@ -457,9 +482,8 @@ h1 em { font-style: normal; color: var(--cyan); }
   color: var(--white);
   padding: 2rem 2.5rem;
   caret-color: var(--cyan);
+  overflow-y: auto;
 }
-
-.page-content::placeholder { color: var(--text-muted); }
 
 .editor-status {
   padding: 0.5rem 2.5rem;
