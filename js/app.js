@@ -1,5 +1,5 @@
 // Vérification session
-if (!localStorage.getItem("orgabook_session")) { window.location.href = "/Orgabooks/html/login.html"; }
+if (!localStorage.getItem("orgabook_session")) { window.location.href = "https://viko73.github.io/Orgabooks/html/login.html"; }
 
 
 // --- Clé de stockage par utilisateur ---
