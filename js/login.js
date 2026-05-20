@@ -149,7 +149,7 @@ function login() {
   }
 
   setSession(username);
-  window.location.href = '../index.html';
+  window.location.href = 'index.html';
 }
 
 // ===== INSCRIPTION =====
@@ -208,7 +208,7 @@ function register() {
   showSuccess('register-success', 'Compte créé ! Connexion en cours...');
   setTimeout(() => {
     setSession(username);
-    window.location.href = '../index.html';
+    window.location.href = 'index.html';
   }, 1000);
 }
 
